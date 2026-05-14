@@ -1,15 +1,5 @@
 create extension if not exists pgcrypto with schema extensions;
 
-create table if not exists public.app_users (
-  id uuid primary key default gen_random_uuid(),
-  nickname text not null,
-  password_hash text not null,
-  created_at timestamptz not null default now(),
-  constraint app_users_nickname_unique unique (nickname)
-);
-
-alter table public.app_users enable row level security;
-
 create or replace function public.register_user(p_nickname text, p_password text)
 returns table (
   user_id uuid,
