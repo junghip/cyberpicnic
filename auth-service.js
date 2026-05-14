@@ -134,7 +134,7 @@ export function getAuthErrorMessage(error) {
   }
 
   if (error.message === "supabase-not-configured") {
-    return "Supabase 설정이 필요합니다. supabase-config.js를 확인해 주세요.";
+    return "Supabase 설정을 불러오지 못했습니다. GitHub Pages에서는 https://junghip.github.io/cyberpicnic/ 주소로 접속해 주세요.";
   }
 
   if (error.message === "supabase-schema-not-applied") {

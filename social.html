@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        if (!location.hostname.endsWith("github.io")) {
+          return;
+        }
+
+        var segments = location.pathname.split("/").filter(Boolean);
+        if (!segments.length) {
+          return;
+        }
+
+        var baseHref = "/" + segments[0] + "/";
+        if (location.pathname === "/" + segments[0] || location.pathname.indexOf(baseHref) === 0) {
+          var baseElement = document.createElement("base");
+          baseElement.href = baseHref;
+          document.head.insertBefore(baseElement, document.head.firstChild);
+        }
+      })();
+    </script>
     <title>cyberBAB 소셜</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
