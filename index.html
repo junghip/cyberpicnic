@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cyberBAB 시작하기</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone onboarding-screen" aria-label="닉네임 입력 화면">
+      <header class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <span class="status-bar__signal"></span>
+          <span class="status-bar__wifi"></span>
+          <span class="status-bar__battery"></span>
+        </div>
+      </header>
+
+      <section class="onboarding-panel">
+        <p class="onboarding-panel__eyebrow">cyberBAB</p>
+        <h1 class="onboarding-panel__title">닉네임을 입력해 주세요</h1>
+        <p class="onboarding-panel__description">
+          앱에서 사용할 이름을 정하면 홈 화면으로 이동합니다.
+        </p>
+
+        <form class="onboarding-form" id="nickname-form">
+          <label class="onboarding-form__label" for="nickname-input">닉네임</label>
+          <input
+            class="onboarding-form__input"
+            id="nickname-input"
+            name="nickname"
+            type="text"
+            maxlength="12"
+            placeholder="예: cyber하은"
+            autocomplete="nickname"
+            required
+          />
+          <p class="onboarding-form__error" id="nickname-error" hidden></p>
+          <button class="onboarding-form__submit" type="submit">앱 입장하기</button>
+        </form>
+      </section>
+
+      <div class="home-indicator" aria-hidden="true"></div>
+    </main>
+
+    <script type="module" src="onboarding.js"></script>
+  </body>
+</html>

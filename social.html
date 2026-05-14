@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cyberBAB 소셜</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone" aria-label="소셜 랜딩 화면">
+      <header class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <span class="status-bar__signal"></span>
+          <span class="status-bar__wifi"></span>
+          <span class="status-bar__battery"></span>
+        </div>
+      </header>
+
+      <section class="top-bar">
+        <div class="tab-switch is-social" role="tablist" aria-label="메인 탭">
+          <button
+            class="tab-switch__button"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-nav-tab="home"
+          >
+            홈
+          </button>
+          <button
+            class="tab-switch__button is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-nav-tab="social"
+          >
+            소셜
+          </button>
+        </div>
+        <button class="profile-button profile-button--filled" type="button" id="profile-button" aria-label="프로필"></button>
+      </section>
+
+      <section class="party-grid" aria-label="파티 목록">
+        <button class="party-card party-card--create" type="button" data-open-create-party>
+          <span class="party-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16 7V25M7 16H25"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="party-card__label">새 파티 생성하기</span>
+        </button>
+        <button class="party-card party-card--empty" type="button" aria-label="빈 파티 카드"></button>
+        <button class="party-card party-card--empty" type="button" aria-label="빈 파티 카드"></button>
+        <button class="party-card party-card--empty" type="button" aria-label="빈 파티 카드"></button>
+      </section>
+
+      <section class="party-code">
+        <p class="party-code__message">파티 코드를 입력해서 새 그룹에 입장해보세요!</p>
+        <button
+          class="party-code__button"
+          type="button"
+          data-open-party-modal
+          aria-controls="party-code-modal"
+        >
+          파티 코드 입력하기
+        </button>
+        <p class="party-code__feedback" id="party-code-feedback" hidden></p>
+      </section>
+
+      <div class="home-indicator" aria-hidden="true"></div>
+    </main>
+
+    <div class="modal" id="party-code-modal" hidden>
+      <div class="modal__backdrop" data-close-party-modal></div>
+      <div
+        class="modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="party-code-modal-title"
+      >
+        <h2 class="modal__title" id="party-code-modal-title">파티 코드 입력</h2>
+        <p class="modal__description">초대받은 영문+숫자 6자리 코드를 입력하면 해당 파티로 이동합니다.</p>
+        <form class="party-code-form" id="party-code-form">
+          <label class="party-code-form__label" for="party-code-input">파티 코드</label>
+          <input
+            class="party-code-form__input"
+            id="party-code-input"
+            name="partyCode"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            minlength="6"
+            maxlength="6"
+            pattern="[A-Za-z0-9]{6}"
+            placeholder="예: A1B2C3"
+            required
+          />
+          <p class="party-code-form__error" id="party-code-error" hidden></p>
+          <div class="modal__actions">
+            <button class="modal__button modal__button--ghost" type="button" data-close-party-modal>
+              취소
+            </button>
+            <button class="modal__button modal__button--primary" type="submit">입장하기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="share-party-modal" hidden>
+      <div class="modal__backdrop" data-close-share-party-modal></div>
+      <div
+        class="modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="share-party-modal-title"
+      >
+        <h2 class="modal__title" id="share-party-modal-title">파티 초대 공유</h2>
+        <p class="modal__description" id="share-party-description">
+          코드나 링크를 공유하면 다른 사용자가 같은 그룹에 들어올 수 있습니다.
+        </p>
+        <div class="share-card">
+          <p class="share-card__label">파티 코드</p>
+          <p
+            class="share-card__value party-code-display"
+            id="share-party-code"
+            aria-live="polite"
+          ></p>
+          <button class="modal__button modal__button--ghost" type="button" data-copy-party-code>
+            코드 복사
+          </button>
+        </div>
+        <div class="share-card">
+          <p class="share-card__label">초대 링크</p>
+          <p class="share-card__url" id="share-party-url"></p>
+          <button class="modal__button modal__button--ghost" type="button" data-copy-party-url>
+            링크 복사
+          </button>
+        </div>
+        <button class="modal__button modal__button--primary modal__button--full" type="button" data-enter-shared-party>
+          내 파티 들어가기
+        </button>
+      </div>
+    </div>
+
+    <script src="supabase-config.js"></script>
+    <script type="module" src="social.js?v=9"></script>
+  </body>
+</html>

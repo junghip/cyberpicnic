@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cyberBAB 파티 상세</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone party-detail-screen" aria-label="파티 상세 화면">
+      <header class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <span class="status-bar__signal"></span>
+          <span class="status-bar__wifi"></span>
+          <span class="status-bar__battery"></span>
+        </div>
+      </header>
+
+      <header class="party-create-header">
+        <button class="party-create-header__back" type="button" id="back-to-share-button" aria-label="파티 생성 완료 화면으로 돌아가기">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M15 6L9 12L15 18"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <h1 class="party-create-header__title" id="party-detail-title">파티 상세</h1>
+        <span class="party-create-header__spacer" aria-hidden="true"></span>
+      </header>
+
+      <section class="party-detail-stage" id="party-detail-stage" data-location-id="1">
+        <div class="party-detail-boards" id="party-detail-boards" aria-label="파티 도시락판"></div>
+      </section>
+
+      <div class="home-indicator" aria-hidden="true"></div>
+    </main>
+
+    <script src="supabase-config.js"></script>
+    <script type="module" src="social-party-detail.js"></script>
+  </body>
+</html>

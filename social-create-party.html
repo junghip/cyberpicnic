@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cyberBAB 파티 생성하기</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone party-create-screen" aria-label="파티 생성하기 화면">
+      <header class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <span class="status-bar__signal"></span>
+          <span class="status-bar__wifi"></span>
+          <span class="status-bar__battery"></span>
+        </div>
+      </header>
+
+      <header class="party-create-header">
+        <button class="party-create-header__back" type="button" id="back-to-social-button" aria-label="소셜로 돌아가기">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M15 6L9 12L15 18"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <h1 class="party-create-header__title">파티 생성하기</h1>
+        <button
+          class="party-create-header__confirm"
+          type="submit"
+          form="create-party-form"
+          id="create-party-confirm-button"
+          aria-label="파티 생성 완료"
+        >
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M5 10.5L8.5 14L15 7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <form class="party-create-form" id="create-party-form">
+        <section class="party-create-section">
+          <label class="party-create-section__label" for="create-party-name">파티의 이름은 무엇인가요?</label>
+          <div class="party-create-name-field">
+            <span class="party-create-name-field__caret" aria-hidden="true"></span>
+            <input
+              class="party-create-name-field__input"
+              id="create-party-name"
+              name="partyName"
+              type="text"
+              maxlength="30"
+              autocomplete="off"
+              required
+            />
+          </div>
+        </section>
+
+        <section class="party-create-section">
+          <p class="party-create-section__label" id="party-member-count-label">피크닉에 참여할 친구는 모두 몇 명인가요?</p>
+          <div class="party-create-count" role="radiogroup" aria-labelledby="party-member-count-label">
+            <button class="party-create-count__option" type="button" data-member-count="2" role="radio" aria-checked="false">
+              2
+            </button>
+            <button
+              class="party-create-count__option is-active"
+              type="button"
+              data-member-count="3"
+              role="radio"
+              aria-checked="true"
+            >
+              3
+            </button>
+            <button class="party-create-count__option" type="button" data-member-count="4" role="radio" aria-checked="false">
+              4
+            </button>
+            <button class="party-create-count__option" type="button" data-member-count="5" role="radio" aria-checked="false">
+              5
+            </button>
+            <button class="party-create-count__option" type="button" data-member-count="6" role="radio" aria-checked="false">
+              6
+            </button>
+            <button class="party-create-count__option" type="button" data-member-count="7" role="radio" aria-checked="false">
+              7
+            </button>
+          </div>
+          <input type="hidden" name="memberCount" id="create-party-member-count" value="3" />
+        </section>
+
+        <section class="party-create-section party-create-section--location">
+          <div class="party-create-section__heading">
+            <p class="party-create-section__label">함께 피크닉을 할 장소를 선택해주세요!</p>
+            <p class="party-create-section__hint">장소는 언제든지 변경할 수 있어요.</p>
+          </div>
+          <div class="party-create-locations" role="radiogroup" aria-label="피크닉 장소 선택">
+            <button
+              class="party-create-locations__option is-active"
+              type="button"
+              data-location-id="1"
+              role="radio"
+              aria-checked="true"
+              aria-label="낮 잔디밭"
+            ></button>
+            <button
+              class="party-create-locations__option"
+              type="button"
+              data-location-id="2"
+              role="radio"
+              aria-checked="false"
+              aria-label="밤 잔디밭"
+            ></button>
+            <button
+              class="party-create-locations__option"
+              type="button"
+              data-location-id="3"
+              role="radio"
+              aria-checked="false"
+              aria-label="도서관"
+            ></button>
+            <button
+              class="party-create-locations__option"
+              type="button"
+              data-location-id="4"
+              role="radio"
+              aria-checked="false"
+              aria-label="고급 레스토랑"
+            ></button>
+          </div>
+          <input type="hidden" name="locationId" id="create-party-location-id" value="1" />
+        </section>
+
+        <p class="party-create-form__error" id="create-party-error" hidden></p>
+      </form>
+
+      <div class="home-indicator" aria-hidden="true"></div>
+    </main>
+
+    <script src="supabase-config.js"></script>
+    <script type="module" src="social-create-party.js"></script>
+  </body>
+</html>

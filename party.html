@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파티 입장</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone" aria-live="polite">
+      <header class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <span class="status-bar__signal"></span>
+          <span class="status-bar__wifi"></span>
+          <span class="status-bar__battery"></span>
+        </div>
+      </header>
+
+      <section class="room-screen">
+        <span class="room-screen__badge" id="party-code-badge">CODE</span>
+        <h1 class="room-screen__title" id="party-name">파티에 입장했습니다</h1>
+        <p class="room-screen__description" id="party-description">
+          이 화면은 코드 검증 후 이동한 파티 룸입니다.
+        </p>
+        <button class="room-screen__button room-screen__button--ghost" type="button" id="copy-invite-button">
+          초대 링크 복사
+        </button>
+        <button class="room-screen__button" type="button" id="leave-party-button">
+          소셜 랜딩으로 돌아가기
+        </button>
+      </section>
+
+      <div class="home-indicator" aria-hidden="true"></div>
+    </main>
+
+    <script src="supabase-config.js"></script>
+    <script type="module" src="party.js"></script>
+  </body>
+</html>
