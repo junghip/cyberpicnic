@@ -166,9 +166,9 @@ begin
   insert into public.party_members (party_id, guest_id)
   values (current_party.id, normalized_guest_id);
 
-  update public.parties
-  set member_count = member_count + 1
-  where public.parties.id = current_party.id
+  update public.parties as parties
+  set member_count = parties.member_count + 1
+  where parties.id = current_party.id
   returning * into current_party;
 
   return query

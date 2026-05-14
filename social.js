@@ -218,6 +218,10 @@ function getJoinErrorMessage(error) {
     return "유효하지 않은 파티 코드입니다. 다시 확인해 주세요.";
   }
 
+  if (error.message === "supabase-schema-not-applied") {
+    return "서버 파티 입장 설정이 아직 반영되지 않았습니다. Supabase SQL Editor에서 supabase/fix-join-party-ambiguous.sql을 실행해 주세요.";
+  }
+
   return "입장에 실패했습니다. Supabase SQL 적용 여부를 확인해 주세요.";
 }
 

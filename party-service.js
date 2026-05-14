@@ -203,6 +203,10 @@ async function joinPartyWithSupabase(code, guestId) {
 
   if (error) {
     if (isSupabaseSchemaError(error)) {
+      if (isSupabaseConfigured()) {
+        throw new Error("supabase-schema-not-applied");
+      }
+
       return joinPartyWithMock(normalizedCode, guestId);
     }
 
@@ -227,6 +231,10 @@ async function createPartyWithSupabase(name, guestId) {
 
   if (error) {
     if (isSupabaseSchemaError(error)) {
+      if (isSupabaseConfigured()) {
+        throw new Error("supabase-schema-not-applied");
+      }
+
       return createPartyWithMock(name, guestId);
     }
 

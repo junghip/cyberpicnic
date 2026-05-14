@@ -43,6 +43,10 @@ function getCreateErrorMessage(error) {
     return "파티 코드를 만들지 못했습니다. 다시 시도해 주세요.";
   }
 
+  if (error.message === "supabase-schema-not-applied") {
+    return "서버 파티 설정이 아직 반영되지 않았습니다. Supabase SQL Editor에서 supabase/fix-join-party-ambiguous.sql을 실행해 주세요.";
+  }
+
   return "파티 생성에 실패했습니다. Supabase SQL 적용 여부를 확인해 주세요.";
 }
 
