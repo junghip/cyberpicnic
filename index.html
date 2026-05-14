@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="phone onboarding-screen" aria-label="닉네임 입력 화면">
+    <main class="phone onboarding-screen" aria-label="계정 시작 화면">
       <header class="status-bar" aria-hidden="true">
         <span class="status-bar__time">9:41</span>
         <div class="status-bar__icons">
@@ -19,10 +19,19 @@
 
       <section class="onboarding-panel">
         <p class="onboarding-panel__eyebrow">cyberBAB</p>
-        <h1 class="onboarding-panel__title">닉네임을 입력해 주세요</h1>
-        <p class="onboarding-panel__description">
-          앱에서 사용할 이름을 정하면 홈 화면으로 이동합니다.
+        <h1 class="onboarding-panel__title" id="onboarding-title">계정을 만들어 주세요</h1>
+        <p class="onboarding-panel__description" id="onboarding-description">
+          닉네임과 비밀번호로 로그인하면 다른 기기에서도 같은 계정으로 이어갈 수 있습니다.
         </p>
+
+        <div class="onboarding-tabs" role="tablist" aria-label="계정 방식 선택">
+          <button class="onboarding-tabs__button is-active" type="button" role="tab" aria-selected="true" data-auth-mode="signup">
+            처음이에요
+          </button>
+          <button class="onboarding-tabs__button" type="button" role="tab" aria-selected="false" data-auth-mode="login">
+            로그인
+          </button>
+        </div>
 
         <form class="onboarding-form" id="nickname-form">
           <label class="onboarding-form__label" for="nickname-input">닉네임</label>
@@ -33,17 +42,45 @@
             type="text"
             maxlength="12"
             placeholder="예: cyber하은"
-            autocomplete="nickname"
+            autocomplete="username"
             required
           />
+
+          <label class="onboarding-form__label" for="password-input">비밀번호</label>
+          <input
+            class="onboarding-form__input"
+            id="password-input"
+            name="password"
+            type="password"
+            minlength="4"
+            maxlength="64"
+            placeholder="4자 이상"
+            autocomplete="new-password"
+            required
+          />
+
+          <label class="onboarding-form__label" for="password-confirm-input" id="password-confirm-label">비밀번호 확인</label>
+          <input
+            class="onboarding-form__input"
+            id="password-confirm-input"
+            name="passwordConfirm"
+            type="password"
+            minlength="4"
+            maxlength="64"
+            placeholder="비밀번호 다시 입력"
+            autocomplete="new-password"
+            required
+          />
+
           <p class="onboarding-form__error" id="nickname-error" hidden></p>
-          <button class="onboarding-form__submit" type="submit">앱 입장하기</button>
+          <button class="onboarding-form__submit" type="submit" id="onboarding-submit-button">계정 만들고 입장하기</button>
         </form>
       </section>
 
       <div class="home-indicator" aria-hidden="true"></div>
     </main>
 
+    <script src="supabase-config.js"></script>
     <script type="module" src="onboarding.js"></script>
   </body>
 </html>
